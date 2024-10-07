@@ -1,0 +1,20 @@
+{
+  "name": "game-rotapuzzle",
+  "version": "0.1.1",
+  "scripts": {
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "node backend/server.js",
+    "dev": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "install:all": "npm install && cd frontend && npm install"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.6.3",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "concurrently": "^6.5.1",
+    "webpack-dev-server": "^5.1.0"
+  }
+}

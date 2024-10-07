@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RotaPuzzle - Level Welcome</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #E6E2DD;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #4A4A4A;
+            overflow: hidden;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            max-width: 1920px;
+            max-height: 1080px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #A78A7F;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .puzzle-progress {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #7D6E83;
+        }
+        .btn {
+            padding: 1rem 3rem;
+            font-size: 1.8rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            background-color: #D0B8A8;
+            border: none;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .btn:hover {
+            background-color: #C1A99A;
+            transform: scale(1.05);
+        }
+        .puzzle-image {
+            width: 300px;
+            height: 300px;
+            background-color: #D5CAD0;
+            border: 4px solid #B5ABA3;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #7D6E83;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <div class="puzzle-image">
+            Puzzle Preview
+        </div>
+        <div class="puzzle-progress" id="puzzleProgress">
+            Puzzle 1 of 4
+        </div>
+        <button class="btn" id="beginBtn">Begin</button>
+    </div>
+
+    <script>
+        const puzzleProgress = document.getElementById('puzzleProgress');
+        const beginBtn = document.getElementById('beginBtn');
+        let currentPuzzle = 1;
+        const totalPuzzles = 4;
+
+        function updatePuzzleProgress() {
+            puzzleProgress.textContent = `Puzzle ${currentPuzzle} of ${totalPuzzles}`;
+        }
+
+        beginBtn.addEventListener('click', function() {
+            // Here you would typically navigate to the puzzle game page
+            // For demonstration, we'll just increment the puzzle number
+            if (currentPuzzle < totalPuzzles) {
+                currentPuzzle++;
+                updatePuzzleProgress();
+            }
+        });
+
+        // Initial update
+        updatePuzzleProgress();
+    </script>
+</body>
+</html>

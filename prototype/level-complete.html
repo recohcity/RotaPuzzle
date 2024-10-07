@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RotaPuzzle - 关卡完成</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #E6E2DD;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #4A4A4A;
+            overflow: hidden;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            max-width: 1920px;
+            max-height: 1080px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #A78A7F;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .score-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .main-score {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #D0B8A8;
+            margin-bottom: 0.5rem;
+        }
+        .difficulty {
+            font-size: 1.5rem;
+            color: #7D6E83;
+        }
+        .score-container {
+            background-color: #F0E9E4;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .score-details, .score-status {
+            font-size: 1rem;
+            color: #7D6E83;
+            width: 45%;
+        }
+        .score-details i {
+            width: 20px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #A78A7F;
+        }
+        .buttons {
+            width: 60%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            color: white;
+            font-family: inherit;
+        }
+        .btn-replay {
+            background-color: #B5ABA3;
+        }
+        .btn-next {
+            background-color: #D0B8A8;
+        }
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>恭喜! 您已解锁下一关！</h1>
+        <div class="score-section">
+            <div class="main-score">1300分</div>
+            <div class="difficulty">难度: 中级</div>
+        </div>
+        <div class="score-container">
+            <div class="score-details">
+                <div><i class="fas fa-puzzle-piece"></i> 完成碎片: <span class="highlight">8/8 (+960分)</span></div>
+                <div><i class="fas fa-sync-alt"></i> 旋转使用: <span class="highlight">12/10 (-160分)</span></div>
+                <div><i class="fas fa-lightbulb"></i> 提示使用: <span class="highlight">1次 (-100分)</span></div>
+                <div><i class="fas fa-star"></i> 旋转奖励: <span class="highlight">+600分</span></div>
+            </div>
+            <div class="score-status">
+                <div>本关得分: <span class="highlight">1300分</span></div>
+                <div>关卡满分: <span class="highlight">1500分</span></div>
+                <div>您的最佳: <span class="highlight">1400分</span></div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-replay">Replay</button>
+            <button class="btn btn-next">Next</button>
+        </div>
+    </div>
+</body>
+</html>

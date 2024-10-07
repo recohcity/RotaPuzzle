@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RotaPuzzle - Play</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #E6E2DD;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #4A4A4A;
+            overflow: hidden;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            max-width: 1920px;
+            max-height: 1080px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #F0E9E4;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #D0B8A8;
+        }
+        .pause-btn {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .pause-btn:hover {
+            opacity: 0.8;
+        }
+        .status-cards {
+            display: flex;
+            gap: 1rem;
+        }
+        .status-card {
+            background-color: #A78A7F;
+            color: #FFFFFF;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+        }
+        .game-area {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+            background-color: #4A0E4E;
+            margin: 1rem;
+            border-radius: 10px;
+        }
+        .target-shape {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+        }
+        .target-outline {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px dashed #FFFFFF;
+            box-sizing: border-box;
+        }
+        .puzzle-piece {
+            position: absolute;
+            background-color: #87CEEB;
+            cursor: move;
+        }
+        .triangle-small {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 50px solid #87CEEB;
+        }
+        .triangle-large {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 100px solid #87CEEB;
+        }
+        .square-small {
+            width: 100px;
+            height: 100px;
+        }
+        .bottom-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #D0B8A8;
+        }
+        .rotation-count {
+            color: #FFFFFF;
+            font-size: 1.2rem;
+        }
+        .rotation-controls {
+            display: flex;
+            gap: 1rem;
+        }
+        .rotate-btn, .hint-btn {
+            font-size: 1.2rem;
+            padding: 0.5rem 1.5rem;
+            background-color: #A78A7F;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+        .rotate-btn:hover, .hint-btn:hover {
+            background-color: #96796F;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <button class="pause-btn"><i class="fas fa-pause"></i></button>
+            <div class="status-cards">
+                <div class="status-card">Level: 3 of 10</div>
+                <div class="status-card">Score: 10888</div>
+                <div class="status-card">Diff: Normal</div>
+            </div>
+        </div>
+        <div class="game-area">
+            <div class="target-shape"></div>
+            <div class="target-outline"></div>
+            <div class="puzzle-piece triangle-small" style="top: 20%; left: 20%;"></div>
+            <div class="puzzle-piece triangle-small" style="top: 70%; left: 30%;"></div>
+            <div class="puzzle-piece triangle-large" style="top: 40%; left: 70%;"></div>
+            <div class="puzzle-piece square-small" style="top: 60%; left: 80%;"></div>
+        </div>
+        <div class="bottom-bar">
+            <div class="rotation-count">Rotations: 10/6</div>
+            <div class="rotation-controls">
+                <button class="rotate-btn"><i class="fas fa-undo"></i> Rotate CCW</button>
+                <button class="rotate-btn"><i class="fas fa-redo"></i> Rotate CW</button>
+            </div>
+            <button class="hint-btn">Hint</button>
+        </div>
+    </div>
+
+    <script>
+        // Basic interactivity for puzzle pieces
+        const puzzlePieces = document.querySelectorAll('.puzzle-piece');
+        let activePiece = null;
+
+        puzzlePieces.forEach(piece => {
+            piece.addEventListener('mousedown', function(e) {
+                activePiece = this;
+                this.style.zIndex = 1000;
+            });
+
+            piece.addEventListener('click', function() {
+                activePiece = this;
+            });
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (activePiece) {
+                activePiece.style.left = e.clientX - activePiece.offsetWidth / 2 + 'px';
+                activePiece.style.top = e.clientY - activePiece.offsetHeight / 2 + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            if (activePiece) {
+                activePiece.style.zIndex = 1;
+                activePiece = null;
+            }
+        });
+
+        // Rotation functionality
+        const rotateCCW = document.querySelector('.rotate-btn:first-child');
+        const rotateCW = document.querySelector('.rotate-btn:last-child');
+
+        rotateCCW.addEventListener('click', function() {
+            if (activePiece) {
+                rotateElement(activePiece, -45);
+            }
+        });
+
+        rotateCW.addEventListener('click', function() {
+            if (activePiece) {
+                rotateElement(activePiece, 45);
+            }
+        });
+
+        function rotateElement(element, degrees) {
+            const currentRotation = element.style.transform ? parseInt(element.style.transform.replace('rotate(', '').replace('deg)', '')) || 0 : 0;
+            const newRotation = currentRotation + degrees;
+            element.style.transform = `rotate(${newRotation}deg)`;
+        }
+    </script>
+</body>
+</html>

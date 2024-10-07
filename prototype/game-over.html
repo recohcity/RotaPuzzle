@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RotaPuzzle - Game Over</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #E6E2DD;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #4A4A4A;
+            overflow: hidden;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            max-width: 1920px;
+            max-height: 1080px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #A78A7F;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            width: 40%;
+            gap: 1rem;
+        }
+        .left-section, .right-section {
+            flex: 1;
+        }
+        .game-over {
+            font-size: 2.5rem;
+            color: #7D6E83;
+            margin-bottom: 1rem;
+        }
+        .score {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #D0B8A8;
+            margin-bottom: 0.5rem;
+        }
+        .difficulty {
+            font-size: 1.5rem;
+            color: #7D6E83;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            color: white;
+            font-family: inherit;
+            background-color: #D0B8A8;
+        }
+        .btn:hover {
+            background-color: #C1A99A;
+        }
+        .high-scores {
+            background-color: #F0E9E4;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .high-scores h2 {
+            font-size: 1.8rem;
+            color: #A78A7F;
+            margin-bottom: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid #D5CAD0;
+        }
+        th {
+            font-weight: bold;
+            color: #7D6E83;
+        }
+        .current-score {
+            font-weight: bold;
+            color: #A78A7F;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RotaPuzzle</h1>
+        <div class="content">
+            <div class="left-section">
+                <div class="game-over">Game Over</div>
+                <div class="score">10888</div>
+                <div class="difficulty">难度: 中级</div>
+                <button class="btn">Play Again</button>
+            </div>
+            <div class="right-section">
+                <div class="high-scores">
+                    <h2>历史最高分</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>得分</th>
+                                <th>难度</th>
+                                <th>时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>11236</td>
+                                <td>高级</td>
+                                <td>Today</td>
+                            </tr>
+                            <tr class="current-score">
+                                <td>2</td>
+                                <td>10888</td>
+                                <td>中级</td>
+                                <td>Today</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>9880</td>
+                                <td>中级</td>
+                                <td>2024-07-16</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>9750</td>
+                                <td>初级</td>
+                                <td>2024-07-15</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>9600</td>
+                                <td>中级</td>
+                                <td>2024-07-14</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
