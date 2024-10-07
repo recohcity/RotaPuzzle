@@ -1,0 +1,33 @@
+{
+    "name": "game-rotapuzzle-frontend",
+    "version": "1.0.1",
+    "description": "Frontend for RotaPuzzle game",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack serve --mode development --open --port 3001 --history-api-fallback",
+        "build": "webpack --mode production",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "proxy": "http://localhost:5000",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "commander": "^12.1.0",
+        "react": "^18.2.0",
+        "react-dnd": "^16.0.1",
+        "react-dnd-html5-backend": "^16.0.1",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.11.2"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.22.5",
+        "@babel/preset-env": "^7.22.5",
+        "@babel/preset-react": "^7.22.5",
+        "babel-loader": "^8.2.2",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1",
+        "webpack-dev-server": "^4.11.1"
+    }
+}
